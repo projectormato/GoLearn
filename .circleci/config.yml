@@ -1,0 +1,14 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.13
+    working_directory: /go/src/github.com/projectormato/GoLearn
+    steps:
+      - checkout
+      - run:
+          name: go get
+          command: go get -v -t -d ./...
+      - run:
+          name: go test
+          command: go test -cover ./...
